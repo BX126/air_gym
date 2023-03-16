@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import axios from "axios";
 import { Box, Typography } from "@mui/material";
-
 function App() {
   const [pm25, setPm25] = useState(14);
   const [aqi, setAqi] = useState(7);
   const [loading, setLoading] = useState(true);
   const getData = async () => {
     try {
-      const response = await axios.get(`/backend`);
+      const response = await axios.get(`http://localhost:3003/backend`);
       setAqi(response.data[3]["sensors"][3]["value"])
       setPm25(response.data[14]["sensors"][0]["value"])
     } catch (err) {
